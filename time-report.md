@@ -1,5 +1,9 @@
 # Time Report
 
+- 2025-05-05 11:00 Worked for 1 hour.
+  - *Fixed the form by moving the button out of it*
+  - *Started looking at table generation*
+
 - 2025-05-04 13:00 Worked for 2 hours.
   - *Done a lot of mental work for the project*
   - *After much pondering, still can't decide how this will work...*
