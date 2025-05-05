@@ -29,61 +29,65 @@
                 height: 35px;
                 background-color: white;
             }
-            fieldset button {
-                margin: 10px;
+            main button {
+                margin: 20px;
                 width: 310px;
-                color: darkred;
+            }
+            table {
+                margin: auto;
             }
         </style>
     </head>
     <body>
         <main>
-            <form action="">
+            <form>
                 <fieldset>
                     <legend>Step 1:</legend>
                     <label for="numberofstitches">Number of stitches:</label><br>
-                    <input type="text" id="numberofstitches" name="NumberOfStitches"><br>
-                    <label for="rowOne">1st row</label><br>
-                    <input type="text" id="rowOne" name="FirstRow"><br>
-                    <button id="createChartButton()">Create the chart!</button>
+                    <input type="text" id="numberofstitches" name="numberofstitches" autofocus><br>
+                    <label for="rowone">Enter 1st row:</label><br>
+                    <input type="text" id="rowone" name="rowone"><br>
+                    <label for="rowtwo">Enter 2nd row:</label><br>
+                    <input type="text" id="rowtwo" name="rowtwo"><br>
                 </fieldset>
             </form>
+            <button id="createChartButton" onclick="createChart()">Create the chart!</button>
         </main>
+        <table>
+
+        </table>
     </body>
 </html>
 
 
 <script>
-//problems to solve:
-//1. Entering the pattern - need to code in CO, BO, knit, purl, edge
-//2. Adding new rows as needed
-//3. Displaying the pattern
-//4. Extending the pattern
-
-//we need to be able to correspond the number of stitches to the entered pattern
-//let's say the user enters 48 stitches here, and the pattern is K1 P1(K1 P1) K1
+//we need to be able to translate the instructions into a pattern
+//if the user enters 48 stitches here, and the pattern is K1 P1(K1 P1) K1
 //K1 P1 indicate edge, parenthesis indicate repetition, and K1 at the end is another edge
 //Thus pattern would be k1=stitch 1, p1=2, (k1, p1 = stitches 3 to 47), and k1=48
 
-//number of stitches 
-var numberofstitches = document.getElementById("numberofstitches");
-console.log(numberofstitches);
-//first row only for now
-var rowOne = document.getElementById("rowOne"); 
-console.log(rowOne);
 //first edge
 var beginrow;
 //end edge
 var endrow;
 //repetition variable to update after calculating the repetition position in the array
 var repeatstitches;
-//assign a variable to the button 
-var createchartbutton = document.getElementById("createChartButton()");
-//add a click event to the button
-createchartbutton.addEventListener("click", createChart);
 
 //make a function that creates the chart
     function createChart() {
+       //number of stitches 
+        var numberofstitches = document.getElementById("numberofstitches");
+        console.log(numberofstitches.value);
+        //first row 
+        var rowone = document.getElementById("rowone");
+        console.log(rowone.value);
+        //second row
+        var rowtwo = document.getElementById("rowtwo");
+        console.log(rowtwo.value);
+        //creating the table
+        var createtable 
+        //populating the table
         
+
     }
 </script>
