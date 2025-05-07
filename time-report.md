@@ -1,5 +1,8 @@
 # Time Report
 
+- 2025-05-07 14:00 Worked for 30 minutes. Swore for 1 hour.
+  - *Tried a solution for creating a table dynamically, which did not work*
+
 - 2025-05-05 11:00 Worked for 1 hour.
   - *Fixed the form by moving the button out of it*
   - *Started looking at table generation*
