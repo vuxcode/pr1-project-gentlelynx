@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
     <head>
+        <meta charset="UTF-8">
         <title>Knitter helper 0.1</title>
         <style>
             main {
@@ -52,10 +53,21 @@
                 </fieldset>
             </form>
             <button id="createChartButton" onclick="createChart()">Create the chart!</button>
+            <table id="chartTable">
+                <tr id="headerRow">
+                    
+                </tr>
+                <tr id="">
+    
+                </tr>
+                <tr id="secondRow">
+    
+                </tr>
+            </table>
         </main>
-        <table>
-
-        </table>
+        <div id="TEST">
+            <tr id="firstRow">The text above has been created dynamically.</tr>
+        </div>
     </body>
 </html>
 
@@ -66,27 +78,45 @@
 //K1 P1 indicate edge, parenthesis indicate repetition, and K1 at the end is another edge
 //Thus pattern would be k1=stitch 1, p1=2, (k1, p1 = stitches 3 to 47), and k1=48
 
-//first edge
-var beginrow;
+
 //end edge
 var endrow;
 //repetition variable to update after calculating the repetition position in the array
 var repeatstitches;
+//come back to this thing
+//document.body.onload = addElement;
 
 //make a function that creates the chart
     function createChart() {
-       //number of stitches 
+        //Get the table id 
+        var table = document.getElementById("chartTable");
+
+        //number of stitches=number of columns 
         var numberofstitches = document.getElementById("numberofstitches");
-        console.log(numberofstitches.value);
+        console.log("Number of columns :" + numberofstitches.value);
         //first row 
         var rowone = document.getElementById("rowone");
-        console.log(rowone.value);
+        console.log("First row: " + rowone.value);
         //second row
         var rowtwo = document.getElementById("rowtwo");
-        console.log(rowtwo.value);
-        //creating the table
-        var createtable 
-        //populating the table
+        console.log("Second row :" + rowtwo.value);
+        
+        // do something here to clear the table before populating it?
+
+        //creating the table?
+
+        //create a table data element
+        //var beginrow = document.createElement("tr");
+        //testing content to add to the table
+        //var testContent = document.createTextNode("Testing :)")
+        //add content to it?
+        //beginrow.appendChild(testContent);
+        //updating the td
+        //var testbeginrow = document.getElementById("firstRow");
+        //console.log(testbeginrow);
+        //document.body.insertBefore(beginrow, testbeginrow);
+
+        //this option is not working, but I am keeping it here for historical reference.
         
 
     }
