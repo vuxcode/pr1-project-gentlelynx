@@ -1,5 +1,11 @@
 # Time Report
 
+- 2025-05-08 14:00 Worked for 1 hour. Swore for 1 hour.
+  - *Spent too much time researching SVGs*
+  - *Removed anything table-related*
+  - *Added canvas, which now changes size based on input*
+  - *Look into changing everything entirely into arrays*
+
 - 2025-05-07 14:00 Worked for 30 minutes. Swore for 1 hour.
   - *Tried a solution for creating a table dynamically, which did not work*
 
