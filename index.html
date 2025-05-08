@@ -46,6 +46,11 @@
                     <legend>Step 1:</legend>
                     <label for="numberofstitches">Number of stitches:</label><br>
                     <input type="text" id="numberofstitches" name="numberofstitches" autofocus><br>
+                    <label for="numberofrows">Number of rows:</label>
+                    <input type="text" id="numberofrows" name="numberofrows"><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Step 2:</legend>
                     <label for="rowone">Enter 1st row:</label><br>
                     <input type="text" id="rowone" name="rowone"><br>
                     <label for="rowtwo">Enter 2nd row:</label><br>
@@ -53,21 +58,8 @@
                 </fieldset>
             </form>
             <button id="createChartButton" onclick="createChart()">Create the chart!</button>
-            <table id="chartTable">
-                <tr id="headerRow">
-                    
-                </tr>
-                <tr id="">
-    
-                </tr>
-                <tr id="secondRow">
-    
-                </tr>
-            </table>
         </main>
-        <div id="TEST">
-            <tr id="firstRow">The text above has been created dynamically.</tr>
-        </div>
+        <canvas id="output" width="100" height="40" style="border:1px solid grey";></canvas>
     </body>
 </html>
 
@@ -88,12 +80,12 @@ var repeatstitches;
 
 //make a function that creates the chart
     function createChart() {
-        //Get the table id 
-        var table = document.getElementById("chartTable");
-
         //number of stitches=number of columns 
         var numberofstitches = document.getElementById("numberofstitches");
         console.log("Number of columns :" + numberofstitches.value);
+        //number of rows
+        var numberofrows = document.getElementById("numberofrows");
+        console.log("Number of rows :" + numberofrows.value);
         //first row 
         var rowone = document.getElementById("rowone");
         console.log("First row: " + rowone.value);
@@ -101,23 +93,14 @@ var repeatstitches;
         var rowtwo = document.getElementById("rowtwo");
         console.log("Second row :" + rowtwo.value);
         
-        // do something here to clear the table before populating it?
+        //changing the canvas width?
+        document.getElementById('output').width = (numberofstitches.value * 50);
+        document.getElementById('output').height = (numberofrows.value * 50);
 
-        //creating the table?
-
-        //create a table data element
-        //var beginrow = document.createElement("tr");
-        //testing content to add to the table
-        //var testContent = document.createTextNode("Testing :)")
-        //add content to it?
-        //beginrow.appendChild(testContent);
-        //updating the td
-        //var testbeginrow = document.getElementById("firstRow");
-        //console.log(testbeginrow);
-        //document.body.insertBefore(beginrow, testbeginrow);
-
-        //this option is not working, but I am keeping it here for historical reference.
-        
-
+        //fetch canvas
+        var canvas = document.getElementById("output");
+        var ctx = canvas.getContext("2d");
+        //clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 </script>
