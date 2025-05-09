@@ -41,15 +41,16 @@
     </head>
     <body>
         <main>
+            <img src="v20x20.jpg" id="knit" alt="Graphic of the knit symbol">
             <form>
-                <fieldset>
+                <fieldset id="step1">
                     <legend>Step 1:</legend>
                     <label for="numberofstitches">Number of stitches:</label><br>
                     <input type="text" id="numberofstitches" name="numberofstitches" autofocus><br>
                     <label for="numberofrows">Number of rows:</label>
                     <input type="text" id="numberofrows" name="numberofrows"><br>
                 </fieldset>
-                <fieldset>
+                <fieldset id="step2">
                     <legend>Step 2:</legend>
                     <label for="rowone">Enter 1st row:</label><br>
                     <input type="text" id="rowone" name="rowone"><br>
@@ -59,8 +60,8 @@
             </form>
             <button id="createChartButton" onclick="createChart()">Create the chart!</button>
         </main>
-        <canvas id="output" width="100" height="40" style="border:1px solid grey";></canvas>
-    </body>
+        <canvas id="output" width="200" height="40" style="border:1px solid grey";></canvas>
+    </body> 
 </html>
 
 
@@ -73,12 +74,11 @@
 
 //end edge
 var endrow;
-//repetition variable to update after calculating the repetition position in the array
+//repetition variable to update later 
 var repeatstitches;
-//come back to this thing
-//document.body.onload = addElement;
 
-//make a function that creates the chart
+
+//make a function that creates the chart after pressing the button
     function createChart() {
         //number of stitches=number of columns 
         var numberofstitches = document.getElementById("numberofstitches");
@@ -86,14 +86,14 @@ var repeatstitches;
         //number of rows
         var numberofrows = document.getElementById("numberofrows");
         console.log("Number of rows :" + numberofrows.value);
-        //first row 
+        //first row to test 
         var rowone = document.getElementById("rowone");
         console.log("First row: " + rowone.value);
-        //second row
+        //second row to test
         var rowtwo = document.getElementById("rowtwo");
         console.log("Second row :" + rowtwo.value);
         
-        //changing the canvas width?
+        //changing the canvas width&height based on the input
         document.getElementById('output').width = (numberofstitches.value * 50);
         document.getElementById('output').height = (numberofrows.value * 50);
 
@@ -102,5 +102,15 @@ var repeatstitches;
         var ctx = canvas.getContext("2d");
         //clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        //repeat pattern inside the canvas the same amount as the numberofstitches
+        for (var x = numberofstitches; x > 0; x--) {
+            var knit = document.getElementById("knit");
+            var pat = ctx.createPatter(img);
+            ctx.rect(0, 0, 20, 20);
+            ctx.fillStyle = pat;
+            ctx.fill();
+            console.log(x);
+        }
     }
 </script>
