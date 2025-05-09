@@ -1,5 +1,8 @@
 # Time Report
 
+- 2025-05-09 13:30 Worked for 1 hour.
+  - *Didn't get the pattern repeating thing to work*
+
 - 2025-05-08 14:00 Worked for 1 hour. Swore for 1 hour.
   - *Spent too much time researching SVGs*
   - *Removed anything table-related*
