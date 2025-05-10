@@ -1,5 +1,11 @@
 # Time Report
 
+- 2025-05-10 16.15 Worked for 2 hours
+  - *Having trouble accesing data in the arrays. All examples manipulate index positions, but how do I know what they will be based on user's input?*
+  - *Also how do I convert stitches to numbers?*
+  - *Went down a rabit hole of trying to just replace symbols in strings with regex. It's a little complicated, and it also replaces the symbols before I can use them for anything*
+  - *Decided to have three input for each row: start edge, repeating part, end edge. Maybe this will be easier to work with*
+
 - 2025-05-09 13:30 Worked for 1 hour.
   - *Didn't get the pattern repeating thing to work*
 
