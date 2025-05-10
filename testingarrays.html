@@ -1,0 +1,25 @@
+<script>
+
+//this should replace charachters with other symbols when regex is called
+var replaceChars = {"K": "v", "P": "-"};
+//cast on number of stitches
+var caston = Number(19);
+//row one is an array
+var rowone = ["K19"];
+console.log(rowone.length);
+//row two is not an array
+var rowtwo = "K1, P1, (K1, P1), K1";
+//regular expression to replace K & P with v & -
+//g stands for "global" flag, m is an object representing the character mapping 
+//example at https://stackoverflow.com/questions/16576983/replace-multiple-characters-in-one-replace-call   
+rowtwo = (rowtwo.replace(/["KP"]/g, m => replaceChars[m]));
+//console.log(rowtwo);
+
+
+//show that we can repeat the repeating part of the row
+var repetitionRow2 = "(K1, P1)";
+console.log(repetitionRow2)
+console.log(repetitionRow2.repeat(caston -3));
+
+
+</script>
