@@ -4,19 +4,18 @@
         <meta charset="UTF-8">
         <title>Knitter helper 0.1</title>
         <style>
-            main {
+         /*   main {
                 background-color: #B2D3A8;
                 margin: auto;
                 border-style: dotted;
                 border-width: 2px;
                 border-radius: 10px;
                 border-color: #498467;
-                width: 400px;
-                height: 400px;
+                width: 600px;
+                height: 500px;
             }
             form {
                 margin: 15px;
-
                 border-radius: 10px;
             }
             label {
@@ -26,44 +25,63 @@
             }
             input{
                 margin: 10px;
-                width: 310px;
+                width: 40px;
                 height: 35px;
                 background-color: white;
             }
             main button {
-                margin: 20px;
-                width: 310px;
+                margin: 20px 20px 20px 100px;
+                width: 200px;
+                height: 40px;
             }
             table {
                 margin: auto;
-            }
+            }*/
         </style>
     </head>
     <body>
         <main>
-            <img src="v20x20.jpg" id="knit" alt="Graphic of the knit symbol">
             <form>
-                <fieldset id="step1">
-                    <legend>Step 1:</legend>
-                    <label for="numberofstitches">Number of stitches:</label><br>
-                    <input type="text" id="numberofstitches" name="numberofstitches" autofocus><br>
-                    <label for="numberofrows">Number of rows:</label>
-                    <input type="text" id="numberofrows" name="numberofrows"><br>
-                </fieldset>
-                <fieldset id="step2">
-                    <legend>Step 2:</legend>
-                    <label for="rowone">Enter 1st row:</label><br>
-                    <input type="text" id="rowone" name="rowone"><br>
-                    <label for="rowtwo">Enter 2nd row:</label><br>
-                    <input type="text" id="rowtwo" name="rowtwo"><br>
+                <fieldset id="enterPattern">
+                    <p>Separate the stitches with ' ', like this: K1 P1</p><br>
+                    <legend>Enter the pattern:</legend>
+                    <label for="numberofstitches">Number of cast on (CO) stitches:</label>
+                    <input type="number" id="caston" name="numberofstitches" min="2" max="100"><br><br>
+                    <p>Row 1:</p>
+                    <label for="startrowone">Starting edge</label>
+                    <input type="text" id="startRowOne" name="startrowone">
+                    <label for="repeatingrowone">Repeating part</label>
+                    <input type="text" id="repeatRowOne" name="repeatingrowone">
+                    <label for="endrowone">End edge</label>
+                    <input type="text" id="endRowOne" name="endrowone"><br><br>
+                    <p>Row 2:</p>
+                    <label for="startrowtwo">Starting edge</label>
+                    <input type="text" name="startrowtwo" id="startRowTwo">
+                    <label for="repeatingrowtwo">Repeating part</label>
+                    <input type="text" name="repeatrowtwo" id="repeatRowTwo">
+                    <label for="endrowtwo">End edge</label>
+                    <input type="text" name="endrowtwo" id="endRowTwo"><br><br>
+                    <p>Row 3:</p>
+                    <label for="startrowthree">Starting edge</label>
+                    <input type="text" name="startrowthree" id="startRowThree">
+                    <label for="repeatingrowthree">Repeating part</label>
+                    <input type="text" name="repeatrowthree" id="repeatRowThree">
+                    <label for="endrowthree">End edge</label>
+                    <input type="text" name="endrowthree" id="endRowThree"><br><br>
+                    <p>Row 4:</p>
+                    <label for="startrowfour">Starting edge</label>
+                    <input type="text" name="startrowfour" id="startRowFour">
+                    <label for="repeatingrowfour">Repeating part</label>
+                    <input type="text" name="repeatrowfour" id="repeatRowFour">
+                    <label for="endrowfour">End edge</label>
+                    <input type="text" name="endrowfour" id="endRowFour"><br><br>
                 </fieldset>
             </form>
-            <button id="createChartButton" onclick="createChart()">Create the chart!</button>
+            <button id="convertButton" onclick="createChart()">Create the chart!</button>
         </main>
-        <canvas id="output" width="200" height="40" style="border:1px solid grey";></canvas>
+        <p id="Result"></p>
     </body> 
 </html>
-
 
 <script>
 //we need to be able to translate the instructions into a pattern
@@ -71,46 +89,75 @@
 //K1 P1 indicate edge, parenthesis indicate repetition, and K1 at the end is another edge
 //Thus pattern would be k1=stitch 1, p1=2, (k1, p1 = stitches 3 to 47), and k1=48
 
-
-//end edge
-var endrow;
-//repetition variable to update later 
-var repeatstitches;
-
-
-//make a function that creates the chart after pressing the button
+    //make a function that creates the chart after pressing the button and runs all the row functions
     function createChart() {
-        //number of stitches=number of columns 
-        var numberofstitches = document.getElementById("numberofstitches");
-        console.log("Number of columns :" + numberofstitches.value);
-        //number of rows
-        var numberofrows = document.getElementById("numberofrows");
-        console.log("Number of rows :" + numberofrows.value);
-        //first row to test 
-        var rowone = document.getElementById("rowone");
-        console.log("First row: " + rowone.value);
-        //second row to test
-        var rowtwo = document.getElementById("rowtwo");
-        console.log("Second row :" + rowtwo.value);
-        
-        //changing the canvas width&height based on the input
-        document.getElementById('output').width = (numberofstitches.value * 50);
-        document.getElementById('output').height = (numberofrows.value * 50);
+        //get to the number of cast on stitches and convert it into a number
+        var caston = document.getElementById("caston");
+        console.log("Number of stitches: " + caston.value);
+        caston = Number(caston.value);
+        //adding text to the message for some reason makes caston no longer a number. why, why? add it to the list of bugs.
+        console.log(caston + 8);
 
-        //fetch canvas
-        var canvas = document.getElementById("output");
-        var ctx = canvas.getContext("2d");
-        //clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //run the row functions
+        createRowOne();
+        //run the print function
+        printRowOne();
+    }
+    function createRowOne() {
+        //variables for the first row
+        var startRowOne = document.getElementById("startRowOne");
+        var repeatRowOne = document.getElementById("repeatRowOne");
+        var endRowOne = document.getElementById("endRowOne");
+        console.log("Starting edge: " + startRowOne.value + ", repetition: " + repeatRowOne.value + " ending edge: " + endRowOne.value);
+        startRowOne = startRowOne.value;
+        repeatRowOne = repeatRowOne.value;
+        endRowOne = endRowOne.value;
+        console.log(startRowOne + "|" + repeatRowOne + "|" + endRowOne);
 
-        //repeat pattern inside the canvas the same amount as the numberofstitches
-        for (var x = numberofstitches; x > 0; x--) {
-            var knit = document.getElementById("knit");
-            var pat = ctx.createPatter(img);
-            ctx.rect(0, 0, 20, 20);
-            ctx.fillStyle = pat;
-            ctx.fill();
-            console.log(x);
+        if(startRowOne.length > 0) {
+            startRowOne = startRowOne.replaceAll("K", "v");
+            startRowOne = startRowOne.replaceAll("P", "-");
+            startRowOne = startRowOne.replaceAll("1", "");
+            startRowOne = startRowOne.replaceAll(",", "");
+
+                console.log("Changed row 1: " + startRowOne);
+            if (repeatRowOne.length > 0) {
+                repeatRowOne = repeatRowOne.replaceAll("K", "v");
+                repeatRowOne = repeatRowOne.replaceAll("P", "-");
+                repeatRowOne = repeatRowOne.replaceAll("1", "");
+                repeatRowOne = repeatRowOne.replaceAll(",", "");
+                console.log("Changed rep row 1: " + repeatRowOne);
+                //.repeat only works with numbers? how do I make it accept a variable?
+                var repRepRowOne = repeatRowOne.repeat(40);
+                console.log(repRepRowOne);
+                
+                if (endRowOne.length > 0) {
+                    endRowOne = endRowOne.replaceAll("K", "v");
+                    endRowOne = endRowOne.replaceAll("P", "-");
+                    endRowOne = endRowOne.replaceAll("1", "");
+                    endRowOne = endRowOne.replaceAll(",", "");
+
+                    console.log("Changed end row 1: " + endRowOne);
+                    //call the print function here
+                    function printRowOne() {
+                        console.log("1. " + startRowOne + "|" + repeatRowOne + "|" + endRowOne);
+                        //console.log("1. " + startRowOne + " " + repeatRowOne * repeat(caston - (startRowOne.length - endRowOne.length)) + endRowOne);
+                    }
+                    printRowOne();
+
+                }
+                else {
+                console.log("End of row 1 missing");
+                }
+            }
+            else {
+            console.log("Repetition of row 1 is missing");
+        }
+        }
+        else {
+            console.log("Start of row 1 is missing");
         }
     }
+    //printing the result
+        
 </script>
