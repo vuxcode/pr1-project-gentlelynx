@@ -1,5 +1,12 @@
 # Time Report
 
+- 2025-05-11 17:30 Worked for 4 hours
+  - *Continued without arrays*
+  - *Disabled css temporarily*
+  - *Fought and lost to htlm/js interactions*
+  - *Input now works*
+  - *Having trouble figuring out the repetition of strings. It works if I let go of html forms... but I don't want to let go of them!*
+
 - 2025-05-10 16.15 Worked for 4 hours
   - *Having trouble accesing data in the arrays. All examples manipulate index positions, but how do I know what they will be based on user's input?*
   - *Also how do I convert stitches to numbers?*
