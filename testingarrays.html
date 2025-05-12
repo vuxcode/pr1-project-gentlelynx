@@ -1,58 +1,42 @@
 <h1 id="Heading">Knitting helper v.0.2</h1>
-<button id="convertButton" onclick="convertRowOne()">Testing</button>
+<button id="convertButton" onclick="convertRowOne()">Convert</button>
 
 <script>
-
 //cast on number of stitches
 var caston = Number(13);
 
 //every var for every row
-var startRowOne = "K1 P1"; var repeatRowOne = "K1 P1 "; var endRowOne = "K1";
-var startRowTwo = "K1"; var repeatRowTwo = "K1 "; var endRowTwo = "K1";
-var startRowThree = "K1 K1"; var repeatRowThree = "P1 K1 "; var endRowThree = "K1";
+//example: K1 P1 (K1 P1) K1
 
-var knit;
-var purl;
+//empty array to update based on the caston number
+//this will be used to print row zero
+var rowZero = new Array();
+//update the array based on caston number
+for (var i = 1; i < caston; i++) {
+    rowZero.push(i);
+}
 
-//translating input
+//declare repetition vars before they are used
+//repetition in first row
+var repRowOne = ["K1", "P1"];
+//entire row one
+var rowOne = ["K1", "P1", [repRowOne], "K1"];
+//row two
+var rowTwo = ["K1"];
+//repetition row three
+var repRowThree = ["P1", "K1"];
+//entire row three
+var rowThree = ["K1", "P1", [repRowThree], "K1"];
+
+
+
+//add all the rows to a single array
+var rowsArray = [rowZero, rowOne, rowTwo, rowThree];
+//flatten all the arrays
+rowsArray.flat(Infinity);
+
+//run this function when the button is pressed
 function convertRowOne() {
-    if(startRowOne.length > 0) {
-        startRowOne = startRowOne.replaceAll("K", "v");
-        startRowOne = startRowOne.replaceAll("P", "-");
-        startRowOne = startRowOne.replaceAll("1", "");
-        startRowOne = startRowOne.replaceAll(",", "");
-
-        console.log("Changed row 1: " + startRowOne);
-        if (repeatRowOne.length > 0) {
-            repeatRowOne = repeatRowOne.replaceAll("K", "v");
-            repeatRowOne = repeatRowOne.replaceAll("P", "-");
-            repeatRowOne = repeatRowOne.replaceAll("1", "");
-            repeatRowOne = repeatRowOne.replaceAll(",", "");
-
-            console.log("Changed rep row 1: " + repeatRowOne);
-            if (endRowOne.length > 0) {
-                endRowOne = endRowOne.replaceAll("K", "v");
-                endRowOne = endRowOne.replaceAll("P", "-");
-                endRowOne = endRowOne.replaceAll("1", "");
-                endRowOne = endRowOne.replaceAll(",", "");
-
-                console.log("Changed end row 1: " + endRowOne);
-                //call the print function here
-                printRowOne();
-            }
-            else {
-            console.log("End of row 1 missing");
-            }
-        }
-        else {
-        console.log("Repetition of row 1 is missing");
-        }
-    }
-    else {
-        console.log("Start of row 1 is missing");
-    }
+    rowsArray.forEach((item, index) => console.log(`${index}: ${item}`));
 }
-//printing translated input
-function printRowOne() {
-    console.log("1. " + startRowOne + " " + repeatRowOne.repeat(caston - (startRowOne.length - endRowOne.length)) + endRowOne);
-}
+</script>
