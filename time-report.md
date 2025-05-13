@@ -1,5 +1,12 @@
 # Time Report
 
+- 2025-05-13 13:00 Worked for 4 hours
+  - *The repetition now works correctly*
+  - *Next step is to turn the array values into corresponding pattern symbols - not yet sure how to do that*
+
+- 2025-05-12 22:00 Worked for 8 hours
+  - *Arrays are working!*
+
 - 2025-05-11 17:30 Worked for 4 hours
   - *Continued without arrays*
   - *Disabled css temporarily*
