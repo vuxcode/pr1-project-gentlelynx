@@ -1,42 +1,67 @@
 <h1 id="Heading">Knitting helper v.0.2</h1>
-<button id="convertButton" onclick="convertRowOne()">Convert</button>
+<button id="convertButton" onclick="repeatRowOne()">Convert</button>
 
 <script>
 //cast on number of stitches
 var caston = Number(13);
 
-//every var for every row
-//example: K1 P1 (K1 P1) K1
+//example instruction: K1 P1 (K1 P1) K1
 
 //empty array to update based on the caston number
 //this will be used to print row zero
 var rowZero = new Array();
 //update the array based on caston number
-for (var i = 1; i < caston; i++) {
+for (var i = 0; i < caston; i++) {
     rowZero.push(i);
 }
 
-//declare repetition vars before they are used
+//declare vars _before_ they are used!
+
 //repetition in first row
 var repRowOne = ["K1", "P1"];
+//length of the repetition array
+var lenRepRowOne = repRowOne.length;
+
 //entire row one
-var rowOne = ["K1", "P1", [repRowOne], "K1"];
+var rowOne = ["K1", "P1", repRowOne, "K1"];
+var lenRowOne = rowOne.length;
+
 //row two
 var rowTwo = ["K1"];
+var lenRowTwo = rowTwo.length;
+
 //repetition row three
 var repRowThree = ["P1", "K1"];
+var lenRepRowThree = repRowThree.length;
+var conRepRowThree = repRowThree.concat(repRowThree);
+
 //entire row three
-var rowThree = ["K1", "P1", [repRowThree], "K1"];
+var rowThree = ["K1", "P1", repRowThree, "K1"];
+var lenRowThree = rowThree.length;
 
+//the number of times the repetition is supposed to be performed
+var numRepRowOne = caston - lenRowOne - lenRepRowOne - 2;
 
-
-//add all the rows to a single array
+//add all the rows to one single array
 var rowsArray = [rowZero, rowOne, rowTwo, rowThree];
-//flatten all the arrays
+//flatten all the arrays even if they are within other arrays 
 rowsArray.flat(Infinity);
+
+var conRepRowOne = [];
+
+//repeat the repetition in row one 
+function repeatRowOne() {
+    console.log(repRowOne);
+    for (var i = 0; i < numRepRowOne; i++) {
+        conRepRowOne = conRepRowOne.concat(repRowOne);
+    }
+    console.log(conRepRowOne);
+}
+
 
 //run this function when the button is pressed
 function convertRowOne() {
-    rowsArray.forEach((item, index) => console.log(`${index}: ${item}`));
+    //display contents of every row together with an index number
+   rowsArray.forEach((item, index) => console.log(`${index}: ${item}`));
 }
 </script>
