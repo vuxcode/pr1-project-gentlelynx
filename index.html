@@ -43,7 +43,7 @@
         <main>
             <form>
                 <fieldset id="enterPattern">
-                    <p>Separate the stitches with ' ', like this: K1 P1</p><br>
+                    <p>Separate the stitches with ',' like this: K1,P1</p><br>
                     <legend>Enter the pattern:</legend>
                     <label for="numberofstitches">Number of cast on (CO) stitches:</label>
                     <input type="number" id="caston" name="numberofstitches" min="2" max="100"><br><br>
@@ -85,18 +85,70 @@
 
 <script>
 //caston number of stitches
-var caston = document.getElementById("caston").value;
-caston = parseInt(caston);
-console.log(caston);
+var caston = document.getElementById("caston");
+var result = document.getElementById("Result");
 
-//empty array to update based on the caston number
-//this will be used to print row zero
-var rowZero = new Array();
-//update the array based on caston number
-for (let i = 0; i < caston; i++) {
-    rowZero.push(i);
+var rowOne;
+var repRowOne = document.getElementById("repeatRowOne");
+var rowOneStart = document.getElementById("startRowOne");
+var rowOneEnd = document.getElementById("endRowOne");
+var numRepRowOne;
+
+var rowTwo;
+var repRowTwo = document.getElementById("repeatRowTwo");
+var rowTwoStart = document.getElementById("startRowTwo");
+var rowTwoEnd = document.getElementById("endRowTwo");
+var numRepRowTwo;
+
+var rowThree;
+var repRowThree = document.getElementById("repeatRowThree");
+var rowThreeStart = document.getElementById("startRowThree");
+var rowThreeEnd = document.getElementById("endRowThree");
+var numRepRowThree;
+
+//function connected to the button
+function createChart() {
+    //make caston.value awailable
+    var castonValue = caston.value;
+    //empty array to update based on the caston number
+    //this will be used to print row zero
+    var rowZero = new Array();
+    //update the array based on caston number
+    for (let i = 1; i < castonValue; i++) {
+        rowZero.push(i);
+    }
+    console.log(rowZero);
+    //if the castonValue is not empty
+    if (castonValue > 0) {
+         //getting the data from the arrays and separating them by commas
+        var rowOneStartSplit = rowOneStart.value;
+        rowOneStartSplit = rowOneStartSplit.split(",");
+        console.log(rowOneStartSplit);
+
+        var repRowOneSplit = repRowOne.value;
+        repRowOneSplit = repRowOneSplit.split(",");
+        console.log(repRowOneSplit);
+
+        var endRowOneSplit = endRowOne.value;
+        endRowOneSplit = endRowOneSplit.split(",");
+        console.log(endRowOneSplit);
+
+        rowOne = ["1: ", rowOneStartSplit, repRowOneSplit, endRowOneSplit];
+        rowOne = rowOne.flat();
+        var lenRowOne = rowOne.length;
+        console.log(rowOne + "." + lenRowOne);
+    }
+    else {
+        console.log("caston was left empty: " + caston);
+        alert("Enter the number of stitches!");
+    }
+   
+    
+    //result.innerHTML = ();
+
 }
-console.log(rowZero);
+
+</script>
 
 
 </script>
