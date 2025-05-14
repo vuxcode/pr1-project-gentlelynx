@@ -1,5 +1,10 @@
 # Time Report
 
+- 2025-05-13 11:30 Worked for 3 hours
+  - *Removed unused variables*
+  - *Run testing*
+  - *Started figuring out interactions with html*
+
 - 2025-05-13 13:00 Worked for 4 hours
   - *The repetition now works correctly*
   - *Next step is to turn the array values into corresponding pattern symbols - not yet sure how to do that*
