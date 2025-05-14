@@ -1,4 +1,4 @@
-<<h1 id="Heading">Knitting helper v.0.2</h1>
+<h1 id="Heading">Knitting helper v.0.2</h1>
 <button id="convertButton" onclick="convertRowOne()">Convert</button>
 
 <script>
@@ -19,8 +19,6 @@ for (let i = 0; i < caston +1; i++) {
 
 //repetition in first row
 var repRowOne = ["K1", "P1"];
-//length of the repetition array
-var lenRepRowOne = repRowOne.length;
 
 //entire row one
 var rowOne = ["K1", "P1", repRowOne, "K1"];
@@ -30,7 +28,6 @@ console.log(lenRowOne);
 
 //rep of row two
 var repRowTwo = ["K1"];
-var lenRepRowTwo = repRowTwo.length;
 
 //row two
 var rowTwo = [repRowTwo];
@@ -40,8 +37,6 @@ console.log(lenRowTwo);
 
 //repetition row three
 var repRowThree = ["P1", "K1"];
-//length of repetition part of row 3
-var lenRepRowThree = repRowThree.length;
 
 //entire row three
 var rowThree = ["K1", "P1", repRowThree, "K1"];
@@ -75,6 +70,7 @@ for (let i = 0; i < numRepRowTwo; i++) {
 //push to original array
 repRowTwo.push(conRepRowTwo);
 console.log(conRepRowTwo);
+
 //repeat repetition of row 3
 for (let i = 0; i < numRepRowThree; i++) {
     conRepRowThree = conRepRowThree.concat(repRowThree);
