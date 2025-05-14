@@ -106,6 +106,12 @@ var rowThreeStart = document.getElementById("startRowThree");
 var rowThreeEnd = document.getElementById("endRowThree");
 var numRepRowThree;
 
+var rowFour;
+var repRowFour = document.getElementById("repeatRowThree");
+var rowFourStart = document.getElementById("startRowFour");
+var rowFourEnd = document.getElementById("endRowFour");
+var numRepRowFour;
+
 //function connected to the button
 function createChart() {
     //make caston.value awailable
@@ -120,34 +126,153 @@ function createChart() {
     console.log(rowZero);
     //if the castonValue is not empty
     if (castonValue > 0) {
-         //getting the data from the arrays and separating them by commas
+        //ROW ONE(1) STARTS HERE
+        
+        //getting the data into the arrays and separating them by commas
         var rowOneStartSplit = rowOneStart.value;
         rowOneStartSplit = rowOneStartSplit.split(",");
-        console.log(rowOneStartSplit);
 
         var repRowOneSplit = repRowOne.value;
         repRowOneSplit = repRowOneSplit.split(",");
-        console.log(repRowOneSplit);
 
         var endRowOneSplit = endRowOne.value;
         endRowOneSplit = endRowOneSplit.split(",");
-        console.log(endRowOneSplit);
 
-        rowOne = ["1: ", rowOneStartSplit, repRowOneSplit, endRowOneSplit];
+        //number to calculate the amount of repetitions to perform
+        numRepRowOne = (castonValue - rowOneStartSplit.length - repRowOneSplit.length - endRowOneSplit.length)/repRowOneSplit.length;
+        //round down 
+        numRepRowOne = Math.floor(numRepRowOne);
+        //empty array for concat
+        var conRepRowOne = [];
+
+        for (let i = 0; i < numRepRowOne; i++) {
+            conRepRowOne = conRepRowOne.concat(repRowOneSplit);
+        }
+        repRowOneSplit.push(conRepRowOne);
+
+        //printing the result of row 1
+        rowOne = [rowOneStartSplit, repRowOneSplit, endRowOneSplit];
         rowOne = rowOne.flat();
-        var lenRowOne = rowOne.length;
-        console.log(rowOne + "." + lenRowOne);
+        console.log("1. " + rowOne);
+
+        //turn into string and replace with appropriate symbols
+        rowOne = rowOne.toString();
+        rowOne = rowOne.replaceAll("K", "v ");
+        rowOne = rowOne.replaceAll("k", "v ");
+        rowOne = rowOne.replaceAll("P", "- ");
+        rowOne = rowOne.replaceAll("p", "- ");
+        rowOne = rowOne.replaceAll("1", "");
+        rowOne = rowOne.replaceAll(",","");
+        //ROW ONE(1) ENDS HERE
+        console.log(rowOne);
+
+        //ROW TWO(2) STARTS HERE
+        var rowTwoStartSplit = rowTwoStart.value;
+        rowTwoStartSplit = rowTwoStartSplit.split(",");
+
+        var repRowTwoSplit = repRowTwo.value;
+        repRowTwoSplit = repRowTwoSplit.split(",");
+
+
+        var endRowTwoSplit = rowTwoEnd.value;
+        endRowTwoSplit = endRowTwoSplit.split(",");
+
+        numRepRowTwo = (castonValue - rowTwoStartSplit.length - repRowTwoSplit.length - endRowTwoSplit.length)/repRowTwoSplit.length;
+        numRepRowTwo = Math.floor(numRepRowTwo);
+        console.log(numRepRowTwo);
+        var conRepRowTwo = [];
+
+        for (let i = 0; i < numRepRowTwo; i++) {
+            conRepRowTwo = conRepRowTwo.concat(repRowTwoSplit);
+        }
+        repRowTwoSplit.push(conRepRowTwo);
+
+        rowTwo = [rowTwoStartSplit, repRowTwoSplit, endRowTwoSplit];
+        rowTwo = rowTwo.flat();
+        console.log("2. " + rowTwo);
+
+        rowTwo = rowTwo.toString();
+        rowTwo = rowTwo.replaceAll("K", "v ");
+        rowTwo = rowTwo.replaceAll("k", "v ");
+        rowTwo = rowTwo.replaceAll("P", "- ");
+        rowTwo = rowTwo.replaceAll("p", "- ");
+        rowTwo = rowTwo.replaceAll("1", "");
+        rowTwo = rowTwo.replaceAll(",", "");
+        //ROW TWO(2) ENDS HERE
+        console.log(rowTwo);
+        //ROW THREE(3) STARTS HERE
+        var rowThreeStartSplit = rowThreeStart.value;
+        rowThreeStartSplit = rowThreeStartSplit.split(",");
+        
+        var repRowThreeSplit = repRowThree.value; 
+        repRowThreeSplit = repRowThreeSplit.split(",");
+
+        var endRowThreeSplit = endRowThree.value;
+        endRowThreeSplit = endRowThreeSplit.split(","),
+
+        numRepRowThree = (castonValue - rowThreeStartSplit.length - repRowThreeSplit.length - endRowOneSplit.length)/repRowThreeSplit.length;
+        numRepRowThree = Math.floor(numRepRowThree);
+        var conRepRowThree = [];
+
+        for (let i = 0; i < numRepRowThree; i++) {
+            conRepRowThree = conRepRowThree.concat(repRowThreeSplit);
+        }
+        repRowThreeSplit.push(conRepRowThree);
+
+        rowThree = [rowThreeStartSplit, repRowThreeSplit, endRowThreeSplit];
+        rowThree = rowThree.flat();
+        console.log("3. " + rowThree);
+
+        rowThree = rowThree.toString();
+        rowThree = rowThree.replaceAll("K", "v ");
+        rowThree = rowThree.replaceAll("k", "v ");
+        rowThree = rowThree.replaceAll("P", "- ");
+        rowThree = rowThree.replaceAll("p", "- ");
+        rowThree = rowThree.replaceAll("1", "");
+        rowThree = rowThree.replaceAll(",", "");
+        //ROW THREE(3) ENDS HERE
+        console.log(rowThree);
+        //ROW FOUR(4) STARTS HERE
+        var rowFourStartSplit = rowFourStart.value;
+        rowFourStartSplit = rowFourStartSplit.split(",");
+
+        var repRowFourSplit = repRowFour.value;
+        repRowFourSplit = repRowFourSplit.split(",");
+
+        var endRowFourSplit = endRowFour.value;
+        endRowFourSplit = endRowFourSplit.split(",");
+        
+        numRepRowFour = (castonValue - rowFourStartSplit.length - repRowFourSplit.length - endRowFourSplit.length)/repRowFourSplit.length;
+        numRepRowFour = Math.floor(numRepRowFour);
+        console.log(numRepRowFour);
+
+        var conRepRowFour = [];
+
+        for (let i = 0; i < numRepRowFour; i++) {
+            conRepRowFour = conRepRowFour.concat(repRowFourSplit);
+        }
+        repRowFourSplit.push(conRepRowFour);
+
+        rowFour = [rowFourStartSplit, repRowFourSplit, endRowFourSplit];
+        rowFour = rowFour.flat();
+        console.log("4. " + rowFour);
+
+        rowFour = rowFour.toString();
+        rowFour = rowFour.replaceAll("K", "v ");
+        rowFour = rowFour.replaceAll("k", "v ");
+        rowFour = rowFour.replaceAll("P", "- ");
+        rowFour = rowFour.replaceAll("p", "- ");
+        rowFour = rowFour.replaceAll("1", "");
+        rowFour = rowFour.replaceAll(",","");
+        //ROW FOUR(4) ENDS HERE
+        console.log(rowFour);
     }
     else {
         console.log("caston was left empty: " + caston);
         alert("Enter the number of stitches!");
     }
-   
-    
-    //result.innerHTML = ();
-
+    result.innerHTML = (rowOne + "<br>" + rowTwo + "<br>" + rowThree + "<br>" + rowFour);
 }
-
 </script>
 
 
