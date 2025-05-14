@@ -1,17 +1,17 @@
-<h1 id="Heading">Knitting helper v.0.2</h1>
-<button id="convertButton" onclick="repeatRowOne()">Convert</button>
+<<h1 id="Heading">Knitting helper v.0.2</h1>
+<button id="convertButton" onclick="convertRowOne()">Convert</button>
 
 <script>
 //cast on number of stitches
 var caston = Number(13);
 
-//example instruction: K1 P1 (K1 P1) K1
+//example instruction: CO (13) K1 P1 (K1 P1) K1
 
 //empty array to update based on the caston number
 //this will be used to print row zero
 var rowZero = new Array();
 //update the array based on caston number
-for (var i = 0; i < caston; i++) {
+for (let i = 0; i < caston +1; i++) {
     rowZero.push(i);
 }
 
@@ -24,40 +24,69 @@ var lenRepRowOne = repRowOne.length;
 
 //entire row one
 var rowOne = ["K1", "P1", repRowOne, "K1"];
-var lenRowOne = rowOne.length;
+var lenRowOne = rowOne.flat();
+lenRowOne = lenRowOne.length;
+console.log(lenRowOne);
+
+//rep of row two
+var repRowTwo = ["K1"];
+var lenRepRowTwo = repRowTwo.length;
 
 //row two
-var rowTwo = ["K1"];
-var lenRowTwo = rowTwo.length;
+var rowTwo = [repRowTwo];
+var lenRowTwo = rowTwo.flat();
+lenRowTwo = lenRowTwo.length;
+console.log(lenRowTwo);
 
 //repetition row three
 var repRowThree = ["P1", "K1"];
+//length of repetition part of row 3
 var lenRepRowThree = repRowThree.length;
-var conRepRowThree = repRowThree.concat(repRowThree);
 
 //entire row three
 var rowThree = ["K1", "P1", repRowThree, "K1"];
-var lenRowThree = rowThree.length;
+//length of entire row 3
+var lenRowThree = rowThree.flat();
+lenRowThree = lenRowThree.length;
+console.log(lenRowThree);
 
-//the number of times the repetition is supposed to be performed
-var numRepRowOne = caston - lenRowOne - lenRepRowOne - 2;
+//the number of times the repetition is supposed to be performed on each row
+var numRepRowOne = (caston - lenRowOne)/2;
+var numRepRowTwo = (caston - lenRowTwo);
+var numRepRowThree = (caston - lenRowThree)/2;
+
+//empty arrays for concanation
+var conRepRowOne = [];
+var conRepRowTwo = [];
+var conRepRowThree = [];
+
+//repeat the repetition in row one 
+for (let i = 0; i < numRepRowOne; i++) {
+    conRepRowOne = conRepRowOne.concat(repRowOne);
+}
+//push to original array
+repRowOne.push(conRepRowOne);
+console.log(conRepRowOne);
+
+//repeat repetition of row 2
+for (let i = 0; i < numRepRowTwo; i++) {
+    conRepRowTwo = conRepRowTwo.concat(repRowTwo)
+}
+//push to original array
+repRowTwo.push(conRepRowTwo);
+console.log(conRepRowTwo);
+//repeat repetition of row 3
+for (let i = 0; i < numRepRowThree; i++) {
+    conRepRowThree = conRepRowThree.concat(repRowThree);
+}
+//push to the original array
+repRowThree.push(conRepRowThree);
+console.log(conRepRowThree);
 
 //add all the rows to one single array
 var rowsArray = [rowZero, rowOne, rowTwo, rowThree];
 //flatten all the arrays even if they are within other arrays 
 rowsArray.flat(Infinity);
-
-var conRepRowOne = [];
-
-//repeat the repetition in row one 
-function repeatRowOne() {
-    console.log(repRowOne);
-    for (var i = 0; i < numRepRowOne; i++) {
-        conRepRowOne = conRepRowOne.concat(repRowOne);
-    }
-    console.log(conRepRowOne);
-}
-
 
 //run this function when the button is pressed
 function convertRowOne() {
