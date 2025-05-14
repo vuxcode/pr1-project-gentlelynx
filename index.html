@@ -84,80 +84,19 @@
 </html>
 
 <script>
-//we need to be able to translate the instructions into a pattern
-//if the user enters 48 stitches here, and the pattern is K1 P1(K1 P1) K1
-//K1 P1 indicate edge, parenthesis indicate repetition, and K1 at the end is another edge
-//Thus pattern would be k1=stitch 1, p1=2, (k1, p1 = stitches 3 to 47), and k1=48
+//caston number of stitches
+var caston = document.getElementById("caston").value;
+caston = parseInt(caston);
+console.log(caston);
 
-    //make a function that creates the chart after pressing the button and runs all the row functions
-    function createChart() {
-        //get to the number of cast on stitches and convert it into a number
-        var caston = document.getElementById("caston");
-        console.log("Number of stitches: " + caston.value);
-        caston = Number(caston.value);
-        //adding text to the message for some reason makes caston no longer a number. why, why? add it to the list of bugs.
-        console.log(caston + 8);
+//empty array to update based on the caston number
+//this will be used to print row zero
+var rowZero = new Array();
+//update the array based on caston number
+for (let i = 0; i < caston; i++) {
+    rowZero.push(i);
+}
+console.log(rowZero);
 
-        //run the row functions
-        createRowOne();
-        //run the print function
-        printRowOne();
-    }
-    function createRowOne() {
-        //variables for the first row
-        var startRowOne = document.getElementById("startRowOne");
-        var repeatRowOne = document.getElementById("repeatRowOne");
-        var endRowOne = document.getElementById("endRowOne");
-        console.log("Starting edge: " + startRowOne.value + ", repetition: " + repeatRowOne.value + " ending edge: " + endRowOne.value);
-        startRowOne = startRowOne.value;
-        repeatRowOne = repeatRowOne.value;
-        endRowOne = endRowOne.value;
-        console.log(startRowOne + "|" + repeatRowOne + "|" + endRowOne);
 
-        if(startRowOne.length > 0) {
-            startRowOne = startRowOne.replaceAll("K", "v");
-            startRowOne = startRowOne.replaceAll("P", "-");
-            startRowOne = startRowOne.replaceAll("1", "");
-            startRowOne = startRowOne.replaceAll(",", "");
-
-                console.log("Changed row 1: " + startRowOne);
-            if (repeatRowOne.length > 0) {
-                repeatRowOne = repeatRowOne.replaceAll("K", "v");
-                repeatRowOne = repeatRowOne.replaceAll("P", "-");
-                repeatRowOne = repeatRowOne.replaceAll("1", "");
-                repeatRowOne = repeatRowOne.replaceAll(",", "");
-                console.log("Changed rep row 1: " + repeatRowOne);
-                //.repeat only works with numbers? how do I make it accept a variable?
-                var repRepRowOne = repeatRowOne.repeat(40);
-                console.log(repRepRowOne);
-                
-                if (endRowOne.length > 0) {
-                    endRowOne = endRowOne.replaceAll("K", "v");
-                    endRowOne = endRowOne.replaceAll("P", "-");
-                    endRowOne = endRowOne.replaceAll("1", "");
-                    endRowOne = endRowOne.replaceAll(",", "");
-
-                    console.log("Changed end row 1: " + endRowOne);
-                    //call the print function here
-                    function printRowOne() {
-                        console.log("1. " + startRowOne + "|" + repeatRowOne + "|" + endRowOne);
-                        //console.log("1. " + startRowOne + " " + repeatRowOne * repeat(caston - (startRowOne.length - endRowOne.length)) + endRowOne);
-                    }
-                    printRowOne();
-
-                }
-                else {
-                console.log("End of row 1 missing");
-                }
-            }
-            else {
-            console.log("Repetition of row 1 is missing");
-        }
-        }
-        else {
-            console.log("Start of row 1 is missing");
-        }
-    }
-    //printing the result
-        
 </script>
