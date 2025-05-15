@@ -4,82 +4,106 @@
         <meta charset="UTF-8">
         <title>Knitter helper 0.1</title>
         <style>
-         /*   main {
-                background-color: #B2D3A8;
+           main {
                 margin: auto;
+                padding: 10px;
+                background-color: #B2D3A8;
                 border-style: dotted;
                 border-width: 2px;
                 border-radius: 10px;
                 border-color: #498467;
-                width: 600px;
-                height: 500px;
+                width: 650px;
+                height: 470px;
+                font-family: monospace;
+            }
+            main h2 {
+                margin: 6px 200px 14px;
             }
             form {
                 margin: 15px;
                 border-radius: 10px;
             }
+            fieldset p{
+                margin: 5px;
+            }
             label {
-                margin: 20px;
-                padding: 20px 10px;
+                padding: 10px 2px;
                 color: #084231;
             }
             input{
-                margin: 10px;
-                width: 40px;
-                height: 35px;
+                margin: 1px;
+                width: 80px;
+                height: 25px;
                 background-color: white;
             }
             main button {
-                margin: 20px 20px 20px 100px;
+                margin: 5px 20px 20px 210px;
                 width: 200px;
                 height: 40px;
+                font-family: monospace;
             }
             table {
                 margin: auto;
-            }*/
+            }
+            article {
+                margin: 10px auto;
+                padding: 10px;
+                background-color: #B2D3A8;
+                border-style: dotted;
+                border-width: 2px;
+                border-radius: 10px;
+                border-color: #498467;
+                width: 650px;
+                height: 220px;
+                font-family: monospace;
+            }
         </style>
     </head>
     <body>
         <main>
             <form>
+                <h2>Knitter helper v.1</h2>
                 <fieldset id="enterPattern">
                     <p>Separate the stitches with ',' like this: K1,P1</p><br>
-                    <legend>Enter the pattern:</legend>
+                    <legend><b>Enter the instructions:</b></legend>
                     <label for="numberofstitches">Number of cast on (CO) stitches:</label>
-                    <input type="number" id="caston" name="numberofstitches" min="2" max="100"><br><br>
+                    <input type="number" id="caston" name="numberofstitches" min="2" max="32"><br><br>
                     <p>Row 1:</p>
                     <label for="startrowone">Starting edge</label>
                     <input type="text" id="startRowOne" name="startrowone">
                     <label for="repeatingrowone">Repeating part</label>
                     <input type="text" id="repeatRowOne" name="repeatingrowone">
                     <label for="endrowone">End edge</label>
-                    <input type="text" id="endRowOne" name="endrowone"><br><br>
+                    <input type="text" id="endRowOne" name="endrowone">
                     <p>Row 2:</p>
                     <label for="startrowtwo">Starting edge</label>
                     <input type="text" name="startrowtwo" id="startRowTwo">
                     <label for="repeatingrowtwo">Repeating part</label>
                     <input type="text" name="repeatrowtwo" id="repeatRowTwo">
                     <label for="endrowtwo">End edge</label>
-                    <input type="text" name="endrowtwo" id="endRowTwo"><br><br>
+                    <input type="text" name="endrowtwo" id="endRowTwo">
                     <p>Row 3:</p>
                     <label for="startrowthree">Starting edge</label>
                     <input type="text" name="startrowthree" id="startRowThree">
                     <label for="repeatingrowthree">Repeating part</label>
                     <input type="text" name="repeatrowthree" id="repeatRowThree">
                     <label for="endrowthree">End edge</label>
-                    <input type="text" name="endrowthree" id="endRowThree"><br><br>
+                    <input type="text" name="endrowthree" id="endRowThree">
                     <p>Row 4:</p>
                     <label for="startrowfour">Starting edge</label>
                     <input type="text" name="startrowfour" id="startRowFour">
                     <label for="repeatingrowfour">Repeating part</label>
                     <input type="text" name="repeatrowfour" id="repeatRowFour">
                     <label for="endrowfour">End edge</label>
-                    <input type="text" name="endrowfour" id="endRowFour"><br><br>
+                    <input type="text" name="endrowfour" id="endRowFour">
                 </fieldset>
             </form>
-            <button id="convertButton" onclick="createChart()">Create the chart!</button>
+            <button id="convertButton" onclick="createChart()">Create the pattern!</button>
         </main>
-        <p id="Result"></p>
+        <article>
+            <h2>Pattern:</h2>
+            <p id="Result"></p>
+        </article>
     </body> 
 </html>
 
@@ -87,27 +111,27 @@
 //caston number of stitches
 var caston = document.getElementById("caston");
 var result = document.getElementById("Result");
-
+//vars for row one
 var rowOne;
 var repRowOne = document.getElementById("repeatRowOne");
 var rowOneStart = document.getElementById("startRowOne");
 var rowOneEnd = document.getElementById("endRowOne");
 var numRepRowOne;
-
+//vars for row two
 var rowTwo;
 var repRowTwo = document.getElementById("repeatRowTwo");
 var rowTwoStart = document.getElementById("startRowTwo");
 var rowTwoEnd = document.getElementById("endRowTwo");
 var numRepRowTwo;
-
+//vars for row three
 var rowThree;
 var repRowThree = document.getElementById("repeatRowThree");
 var rowThreeStart = document.getElementById("startRowThree");
 var rowThreeEnd = document.getElementById("endRowThree");
 var numRepRowThree;
-
+//vars for row four
 var rowFour;
-var repRowFour = document.getElementById("repeatRowThree");
+var repRowFour = document.getElementById("repeatRowFour");
 var rowFourStart = document.getElementById("startRowFour");
 var rowFourEnd = document.getElementById("endRowFour");
 var numRepRowFour;
@@ -120,9 +144,10 @@ function createChart() {
     //this will be used to print row zero
     var rowZero = new Array();
     //update the array based on caston number
-    for (let i = 1; i < castonValue; i++) {
+    for (let i = 0; i < castonValue; i++) {
         rowZero.push(i);
     }
+    rowZero.push(castonValue);
     console.log(rowZero);
     //if the castonValue is not empty
     if (castonValue > 0) {
@@ -142,6 +167,7 @@ function createChart() {
         numRepRowOne = (castonValue - rowOneStartSplit.length - repRowOneSplit.length - endRowOneSplit.length)/repRowOneSplit.length;
         //round down 
         numRepRowOne = Math.floor(numRepRowOne);
+        console.log(numRepRowOne);
         //empty array for concat
         var conRepRowOne = [];
 
@@ -162,7 +188,7 @@ function createChart() {
         rowOne = rowOne.replaceAll("P", "- ");
         rowOne = rowOne.replaceAll("p", "- ");
         rowOne = rowOne.replaceAll("1", "");
-        rowOne = rowOne.replaceAll(",","");
+        rowOne = rowOne.replaceAll(",", "");
         //ROW ONE(1) ENDS HERE
         console.log(rowOne);
 
@@ -212,6 +238,7 @@ function createChart() {
 
         numRepRowThree = (castonValue - rowThreeStartSplit.length - repRowThreeSplit.length - endRowOneSplit.length)/repRowThreeSplit.length;
         numRepRowThree = Math.floor(numRepRowThree);
+        console.log(numRepRowThree);
         var conRepRowThree = [];
 
         for (let i = 0; i < numRepRowThree; i++) {
@@ -264,13 +291,18 @@ function createChart() {
         rowFour = rowFour.replaceAll("p", "- ");
         rowFour = rowFour.replaceAll("1", "");
         rowFour = rowFour.replaceAll(",","");
+        rowFour = rowFour.replaceAll(" ", " ");
         //ROW FOUR(4) ENDS HERE
         console.log(rowFour);
+        //ROW ZERO(0)
+        rowZero = rowZero.toString();
+        rowZero = rowZero.replaceAll(",", " ");
+        console.log(rowZero)
     }
     else {
         console.log("caston was left empty: " + caston);
         alert("Enter the number of stitches!");
     }
-    result.innerHTML = (rowOne + "<br>" + rowTwo + "<br>" + rowThree + "<br>" + rowFour);
+    result.innerHTML = (rowZero + "<br>" + "1 " + rowOne + "<br>" + "2 " + rowTwo + "<br>" + "3 " + rowThree + "<br>" + "4 " + rowFour);
 }
 </script>
