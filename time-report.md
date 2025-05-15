@@ -1,5 +1,10 @@
 # Time Report
 
+- 2025-05-14 12:00 Worked for 4 hours
+  - *Fixed a bug where fourth row was taking values from the third row*
+  - *Minor fixes and improvments for row zero*
+  - *Added a feature: pretty*
+
 - 2025-05-14 20:00 Worked for 6 hours
   - *Conversion is working!*
 
