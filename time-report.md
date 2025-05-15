@@ -1,4 +1,5 @@
 # Time Report
+Total hours: 40.5
 
 - 2025-05-14 12:00 Worked for 4 hours
   - *Fixed a bug where fourth row was taking values from the third row*
