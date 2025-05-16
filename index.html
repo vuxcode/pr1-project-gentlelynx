@@ -67,7 +67,7 @@
                     <p>Separate the stitches with ',' like this: K1,P1</p><br>
                     <legend><b>Enter the instructions:</b></legend>
                     <label for="numberofstitches">Number of cast on (CO) stitches:</label>
-                    <input type="number" id="caston" name="numberofstitches" min="2" max="32"><br><br>
+                    <input type="number" id="caston" name="numberofstitches" min="2" max="29"><br><br>
                     <p>Row 1:</p>
                     <label for="startrowone">Starting edge</label>
                     <input type="text" id="startRowOne" name="startrowone">
@@ -102,7 +102,7 @@
         </main>
         <article>
             <h2>Pattern:</h2>
-            <p id="Result"></p>
+            <pre id="Result"></p>
         </article>
     </body> 
 </html>
@@ -145,7 +145,7 @@ function createChart() {
     var rowZero = new Array();
     //update the array based on caston number
     for (let i = 0; i < castonValue; i++) {
-        rowZero.push(i);
+        rowZero.push(String(i).padStart(2, "0"));
     }
     rowZero.push(castonValue);
     console.log(rowZero);
@@ -183,10 +183,10 @@ function createChart() {
 
         //turn into string and replace with appropriate symbols
         rowOne = rowOne.toString();
-        rowOne = rowOne.replaceAll("K", "v ");
-        rowOne = rowOne.replaceAll("k", "v ");
-        rowOne = rowOne.replaceAll("P", "- ");
-        rowOne = rowOne.replaceAll("p", "- ");
+        rowOne = rowOne.replaceAll("K", " v ");
+        rowOne = rowOne.replaceAll("k", " v ");
+        rowOne = rowOne.replaceAll("P", " - ");
+        rowOne = rowOne.replaceAll("p", " - ");
         rowOne = rowOne.replaceAll("1", "");
         rowOne = rowOne.replaceAll(",", "");
         //ROW ONE(1) ENDS HERE
@@ -218,10 +218,10 @@ function createChart() {
         console.log("2. " + rowTwo);
 
         rowTwo = rowTwo.toString();
-        rowTwo = rowTwo.replaceAll("K", "v ");
-        rowTwo = rowTwo.replaceAll("k", "v ");
-        rowTwo = rowTwo.replaceAll("P", "- ");
-        rowTwo = rowTwo.replaceAll("p", "- ");
+        rowTwo = rowTwo.replaceAll("K", " v ");
+        rowTwo = rowTwo.replaceAll("k", " v ");
+        rowTwo = rowTwo.replaceAll("P", " - ");
+        rowTwo = rowTwo.replaceAll("p", " - ");
         rowTwo = rowTwo.replaceAll("1", "");
         rowTwo = rowTwo.replaceAll(",", "");
         //ROW TWO(2) ENDS HERE
@@ -251,10 +251,10 @@ function createChart() {
         console.log("3. " + rowThree);
 
         rowThree = rowThree.toString();
-        rowThree = rowThree.replaceAll("K", "v ");
-        rowThree = rowThree.replaceAll("k", "v ");
-        rowThree = rowThree.replaceAll("P", "- ");
-        rowThree = rowThree.replaceAll("p", "- ");
+        rowThree = rowThree.replaceAll("K", " v ");
+        rowThree = rowThree.replaceAll("k", " v ");
+        rowThree = rowThree.replaceAll("P", " - ");
+        rowThree = rowThree.replaceAll("p", " - ");
         rowThree = rowThree.replaceAll("1", "");
         rowThree = rowThree.replaceAll(",", "");
         //ROW THREE(3) ENDS HERE
@@ -285,10 +285,10 @@ function createChart() {
         console.log("4. " + rowFour);
 
         rowFour = rowFour.toString();
-        rowFour = rowFour.replaceAll("K", "v ");
-        rowFour = rowFour.replaceAll("k", "v ");
-        rowFour = rowFour.replaceAll("P", "- ");
-        rowFour = rowFour.replaceAll("p", "- ");
+        rowFour = rowFour.replaceAll("K", " v ");
+        rowFour = rowFour.replaceAll("k", " v ");
+        rowFour = rowFour.replaceAll("P", " - ");
+        rowFour = rowFour.replaceAll("p", " - ");
         rowFour = rowFour.replaceAll("1", "");
         rowFour = rowFour.replaceAll(",","");
         rowFour = rowFour.replaceAll(" ", " ");
@@ -303,6 +303,6 @@ function createChart() {
         console.log("caston was left empty: " + caston);
         alert("Enter the number of stitches!");
     }
-    result.innerHTML = (rowZero + "<br>" + "1 " + rowOne + "<br>" + "2 " + rowTwo + "<br>" + "3 " + rowThree + "<br>" + "4 " + rowFour);
+    result.innerHTML = (rowZero + "<br>" + "1. " + rowOne + "<br>" + "2. " + rowTwo + "<br>" + "3. " + rowThree + "<br>" + "4. " + rowFour);
 }
 </script>
