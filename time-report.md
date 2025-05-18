@@ -1,6 +1,9 @@
 # Time Report
 Total hours: 40.5
 
+- 2025-05-18 19:30 Worked for 2 hours
+  - *Wrote project summary and user guide*
+
 - 2025-05-14 12:00 Worked for 4 hours
   - *Fixed a bug where fourth row was taking values from the third row*
   - *Minor fixes and improvments for row zero*
