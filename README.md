@@ -9,8 +9,6 @@ The final program is not the goal! The aim of the project is to show how you hav
 
 # Project Notes
 
-> You can use this section of the file to keep notes about your project as you work on it.
-
 # Project Summary
 
 > Knitting can be complicated, especially to a beginner such as myself. Instructions may be difficult to follow when they look like a jarred mess of letters and numbers. To help myself with the process, I usually use pen and paper to figure out how the pattern will look. This takes a pretty long time. To save time and apply my new-learned JavaScript skills, I've created a tool to help turn the not-so-often intelligeble instructions into visually represented patterns. The point of that is exact the same as the pen and paper trick - to resemble the look of the finished fabric in real life. Knitting is a sort of programming after all, and Knitter helper is a program created with a very specific usecase in mind. Thus, it maybe a little hard to understand at the beginning, especially if one's not familiar with the art of knitting.
@@ -23,6 +21,7 @@ The final program is not the goal! The aim of the project is to show how you hav
   -  Allow adding new rows as needed.
   -  Allow to repeat the entire output pattern to get a better understanding of the finished fabric.
   -  Give feedback to the user when the pattern has gaps, indicating that there might something wrong with the input.
+  -  Improve the look of the page. Allow for more than 28 columns.
   -  The amount of variables can probably be improved (read: reduced). Right now I have about 30 variables which is way too much for something this small. 
   -  The important part of the array manipulations are made with .concat method which I've learned is not the proper way to do this. Can probably be improved with .splice, so this is something I would need to look into.
 
